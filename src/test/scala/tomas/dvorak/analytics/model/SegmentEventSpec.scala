@@ -15,7 +15,7 @@ class SegmentEventSpec extends WordSpec with Matchers {
             "after":"{\"taskId\":\"myTask\", \"levels\":[1], \"tUnits\":[{\"tUnitId\":\"mySegment\", \"confirmedLevel\":1}]}",
             "patch":null
           }"""
-        SegmentEvent.fromLine(line) shouldBe Some(SegmentEvent("myTask", "mySegment", true))
+        SegmentEvent.fromLine(line) shouldBe Some(SegmentEvent("myTask", "mySegment", confirmed = true))
       }
     }
 
@@ -27,7 +27,7 @@ class SegmentEventSpec extends WordSpec with Matchers {
             "patch":"{\"taskId\":\"myTask\", \"levels\":[1], \"tUnits\":[{\"tUnitId\":\"mySegment\", \"confirmedLevel\":1}]}",
             "after":null
           }"""
-        SegmentEvent.fromLine(line) shouldBe Some(SegmentEvent("myTask", "mySegment", true))
+        SegmentEvent.fromLine(line) shouldBe Some(SegmentEvent("myTask", "mySegment", confirmed = true))
       }
     }
 

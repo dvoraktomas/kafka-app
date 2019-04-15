@@ -45,7 +45,7 @@ private class Event(jsonBody: String) extends StrictLogging {
   private val levels = value("levels").asInstanceOf[List[BigDecimal]]
   logger.trace("levels = {}", levels)
 
-  private val segment = value("tUnits").asInstanceOf[List[Map[String, _]]](0)
+  private val segment = value("tUnits").asInstanceOf[List[Map[String, _]]].head
   private val tUnitId = segment("tUnitId").asInstanceOf[String]
   logger.trace("tUnitId = {}", tUnitId)
 
@@ -56,7 +56,7 @@ private class Event(jsonBody: String) extends StrictLogging {
   }
 
   private def confirmed: Boolean = {
-    val confirmed = levels(0) == confirmedLevel0
+    val confirmed = levels.head == confirmedLevel0
     logger.trace("confirmed = {}", confirmed)
     confirmed
   }

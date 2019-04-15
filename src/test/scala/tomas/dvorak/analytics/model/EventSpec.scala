@@ -24,7 +24,7 @@ class EventSpec extends WordSpec with Matchers {
     "levels[0] = tUnits[0].confirmedLevel" should {
       "produce SegmentEvent with confirm" in {
         val event = new Event("""{"taskId":"myTask", "levels":[123], "tUnits":[{"tUnitId":"mySegment", "confirmedLevel": 123}]}""")
-        event.segmentEvent shouldBe Some(SegmentEvent("myTask", "mySegment" , true))
+        event.segmentEvent shouldBe Some(SegmentEvent("myTask", "mySegment" , confirmed = true))
       }
     }
   }
@@ -33,7 +33,7 @@ class EventSpec extends WordSpec with Matchers {
     "levels[0] != tUnits[0].confirmedLevel" should {
       "produce SegmentEvent with unconfirm" in {
         val event = new Event("""{"taskId":"myTask", "levels":[123], "tUnits":[{"tUnitId":"mySegment", "confirmedLevel": 0}]}""")
-        event.segmentEvent shouldBe Some(SegmentEvent("myTask", "mySegment" , false))
+        event.segmentEvent shouldBe Some(SegmentEvent("myTask", "mySegment" , confirmed = false))
       }
     }
   }
