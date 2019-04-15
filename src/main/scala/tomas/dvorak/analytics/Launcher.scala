@@ -10,7 +10,7 @@ object Launcher {
   def main(args: Array[String]): Unit = {
     val params = ParameterTool.fromArgs(args)
     val env = StreamExecutionEnvironment.getExecutionEnvironment
-    val job = new Job(params.get("kafkaBroker"), Time.minutes(params.getLong("windowGapMitutes")))
+    val job = new Job(params.get("kafkaBroker"), Time.minutes(params.getLong("windowGapMinutes")))
     job.defineExecutionPlan(env)
     env.execute("Analytics")
   }
