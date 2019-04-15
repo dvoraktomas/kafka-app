@@ -10,6 +10,7 @@ class EventSpec extends WordSpec with Matchers {
   JSON.globalNumberParser = BigDecimal(_)
 
   "Event" when {
+
     "levels is empty" should {
       "produce nothing" in {
         val event = new Event("""{"taskId":"myTask", "levels":[], "tUnits":[{"tUnitId":"mySegment"}]}""")
